@@ -5,7 +5,10 @@ const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const HtmlwebpackPlugin = require('html-webpack-plugin');
 const HtmlWebpackHandleCssInjectPlugin = require('./HtmlWebpackHandleCssInjectPlugin');
 
-const { STYLE_DEBUG } = process.env;
+const { NODE_ENV } = process.env;
+
+const isDev = NODE_ENV === 'dev';
+
 // 主题路径
 const THEME_PATH = './src/less/themes';
 
@@ -31,7 +34,6 @@ const themeLoaderSet = themeFileNameSet.map((fileName, index) => {
   }
 });
 
-
 module.exports = {
   devServer: {
     contentBase: path.join(__dirname, 'public'),
@@ -42,12 +44,13 @@ module.exports = {
     port: 3201
   },
   entry: {
-    app: './src/index.js'
+    app: './src/index.js',
+    themes: './src/themes.js'
   },
   output: {
     filename: '[name].bundle.js?[hash]',
     path: path.resolve(__dirname, 'dist'),
-    publicPath: '/'
+    publicPath: isDev ? '/' : './'
   },
   module: {
     rules: [
@@ -94,7 +97,9 @@ module.exports = {
       filter: (filePath) => {
         return filePath.includes('style');
       }
+    }),
+    new webpack.DefinePlugin({
+      'process.env.themes': JSON.stringify(themeFileNameSet.map(fileName => fileName.replace('.less', '')))
     })
-  ],
-  devtool: STYLE_DEBUG === 'SOURCE' && 'source-map'
+  ]
 };

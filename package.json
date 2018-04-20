@@ -5,8 +5,9 @@
   "description": "A webpack mutiple theme bundle css demo.",
   "main": "index.js",
   "scripts": {
-    "dev": "webpack-dev-server --mode development --progress --hot",
-    "build": "rm -rf dist && NODE_ENV=production webpack --mode production --progress && cp -R public/* ./dist/ "
+    "dev": "NODE_ENV=dev webpack-dev-server --mode development --progress --hot",
+    "build": "rm -rf dist && NODE_ENV=production webpack --mode production --progress && cp -R public/* ./dist/ && rm -rf dist/themes.bundle.js",
+    "publish": "npm run build && node publish.js"
   },
   "author": "Godfery <hiyangguo@qq.com>",
   "license": "MIT",
@@ -31,6 +32,7 @@
     "css-loader": "^0.28.11",
     "extract-text-webpack-plugin": "^4.0.0-beta.0",
     "file-loader": "^1.1.11",
+    "gh-pages": "^1.1.0",
     "html-loader": "^0.4.3",
     "html-webpack-plugin": "^3.0.6",
     "less": "^3.0.1",
