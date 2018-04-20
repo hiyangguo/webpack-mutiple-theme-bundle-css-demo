@@ -3,6 +3,7 @@ const fs = require('fs');
 const webpack = require('webpack');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const HtmlwebpackPlugin = require('html-webpack-plugin');
+const HtmlWebpackHandleCssInjectPlugin = require('./HtmlWebpackHandleCssInjectPlugin');
 
 const { STYLE_DEBUG } = process.env;
 // 主题路径
@@ -88,6 +89,11 @@ module.exports = {
       title: 'webpack 多主题打包演示',
       template: 'src/index.html',
       inject: true
+    }),
+    new HtmlWebpackHandleCssInjectPlugin({
+      filter: (filePath) => {
+        return filePath.includes('style');
+      }
     })
   ],
   devtool: STYLE_DEBUG === 'SOURCE' && 'source-map'
