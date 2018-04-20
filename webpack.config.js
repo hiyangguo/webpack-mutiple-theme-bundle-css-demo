@@ -4,7 +4,6 @@ const webpack = require('webpack');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const HtmlwebpackPlugin = require('html-webpack-plugin');
 
-const { STYLE_DEBUG } = process.env;
 // 主题路径
 const THEME_PATH = './src/less/themes';
 
@@ -41,7 +40,8 @@ module.exports = {
     port: 3201
   },
   entry: {
-    app: './src/index.js'
+    app: './src/index.js',
+    themes: './src/themes.js'
   },
   output: {
     filename: '[name].bundle.js?[hash]',
@@ -87,8 +87,8 @@ module.exports = {
     new HtmlwebpackPlugin({
       title: 'webpack 多主题打包演示',
       template: 'src/index.html',
-      inject: true
+      inject: true,
+      excludeChunks: ['themes']
     })
-  ],
-  devtool: STYLE_DEBUG === 'SOURCE' && 'source-map'
+  ]
 };

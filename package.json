@@ -6,7 +6,7 @@
   "main": "index.js",
   "scripts": {
     "dev": "webpack-dev-server --mode development --progress --hot",
-    "build": "rm -rf dist && NODE_ENV=production webpack --mode production --progress && cp -R public/* ./dist/ "
+    "build": "rm -rf dist && NODE_ENV=production webpack --mode production --progress && cp -R public/* ./dist/ && rm -rf dist/themes.bundle.js"
   },
   "author": "Godfery <hiyangguo@qq.com>",
   "license": "MIT",
