@@ -4,6 +4,10 @@ const webpack = require('webpack');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const HtmlwebpackPlugin = require('html-webpack-plugin');
 
+const { NODE_ENV } = process.env;
+
+const isDev = NODE_ENV === 'dev';
+
 // 主题路径
 const THEME_PATH = './src/less/themes';
 
@@ -46,7 +50,7 @@ module.exports = {
   output: {
     filename: '[name].bundle.js?[hash]',
     path: path.resolve(__dirname, 'dist'),
-    publicPath: '/'
+    publicPath: isDev ? '/' : './'
   },
   module: {
     rules: [
@@ -89,6 +93,9 @@ module.exports = {
       template: 'src/index.html',
       inject: true,
       excludeChunks: ['themes']
+    }),
+    new webpack.DefinePlugin({
+      'process.env.themes': JSON.stringify(themeFileNameSet.map(fileName => fileName.replace('.less', '')))
     })
   ]
 };
