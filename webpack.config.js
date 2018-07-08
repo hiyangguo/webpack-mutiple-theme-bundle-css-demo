@@ -16,7 +16,7 @@ const extractLess = new ExtractTextPlugin('style.[hash].css');
 const styleLoaders = [{ loader: 'css-loader' }, { loader: 'less-loader' }];
 
 const resolveToThemeStaticPath = fileName => path.resolve(THEME_PATH, fileName);
-const themeFileNameSet = fs.readdirSync(path.resolve(THEME_PATH));
+const themeFileNameSet = fs.readdirSync(path.resolve(THEME_PATH)).filter(fileName => /\.less/.test(fileName));
 const themePaths = themeFileNameSet.map(resolveToThemeStaticPath);
 const getThemeName = fileName => `theme-${path.basename(fileName, path.extname(fileName))}`;
 

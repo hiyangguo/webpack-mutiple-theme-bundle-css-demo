@@ -26,3 +26,6 @@ typings/
 .env
 .next
 /dist/
+# generate by script
+/src/less/themes/*.less
+/src/themes.js

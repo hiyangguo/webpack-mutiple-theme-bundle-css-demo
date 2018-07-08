@@ -5,8 +5,9 @@
   "description": "A webpack mutiple theme bundle css demo.",
   "main": "index.js",
   "scripts": {
-    "dev": "NODE_ENV=dev webpack-dev-server --mode development --progress --hot",
-    "build": "rm -rf dist && NODE_ENV=production webpack --mode production --progress && cp -R public/* ./dist/ && rm -rf dist/themes.bundle.js",
+    "generate-themes": "rm -rf src/less/themes/*.less && node script/generate-themes.js",
+    "dev": "npm run generate-themes && NODE_ENV=dev webpack-dev-server --mode development --progress --hot",
+    "build": "npm run generate-themes && rm -rf dist && NODE_ENV=production webpack --mode production --progress && cp -R public/* ./dist/ && rm -rf dist/themes.bundle.js",
     "publish": "npm run build && node publish.js"
   },
   "author": "Godfery <hiyangguo@qq.com>",
@@ -37,6 +38,7 @@
     "html-webpack-plugin": "^3.0.6",
     "less": "^3.0.1",
     "less-loader": "^4.1.0",
+    "lodash": "^4.17.10",
     "markdown-loader": "2.0.0",
     "postcss-loader": "^2.0.9",
     "react": "^16.2.0",
