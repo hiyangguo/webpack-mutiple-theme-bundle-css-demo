@@ -1,0 +1,4 @@
+body {
+  background-color: #673ab7;
+  transition: background-color 0.3s linear;
+}
