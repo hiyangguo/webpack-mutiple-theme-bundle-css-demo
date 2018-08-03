@@ -215,6 +215,11 @@ new HtmlwebpackPlugin({
 最后感谢[@xiyuyizhi][xiyuyizhi]提供的[宝贵思路](https://github.com/xiyuyizhi/notes/blob/master/js/theme.md)。
 本文纯属原创，如有错误欢迎指正。
 
+## 优化与改进
+上面方法存在一个比较严重的问题，就是需要在 `themes` 文件夹下手动建立多个主题文件。这样做一方面比较难维护，另一方面也会多很多的冗余。所以这里写了一个[脚本][generate-themes-script]，读取配置文件，并生成多个`theme.less`。
+
+
+
 [webpack]:https://webpack.js.org/
 [less-multiple-color-theme-realize]:https://hiyangguo.github.io/2017/03/21/less-multiple-color-theme-realize/
 [gulp]:https://www.gulpjs.com.cn/
@@ -231,3 +236,4 @@ new HtmlwebpackPlugin({
 [exclude-css-file]:https://github.com/hiyangguo/webpack-mutiple-theme-bundle-css-demo/commit/90c1f24af526cd6d48bf6b095500e4ffa5c7f0e6
 [use-plugin]:https://github.com/hiyangguo/webpack-mutiple-theme-bundle-css-demo/commit/2688cead3298b65a4e5871ead1d261b008b545a8
 [final]:https://hiyangguo.github.io/webpack-mutiple-theme-bundle-css-demo/
+[generate-themes-script]:https://github.com/hiyangguo/webpack-mutiple-theme-bundle-css-demo/blob/master/script/generate-themes.js
