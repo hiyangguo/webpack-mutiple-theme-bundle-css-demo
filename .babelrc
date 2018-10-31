@@ -5,27 +5,9 @@
     "react"
   ],
   "plugins": [
-    "lodash",
     "transform-class-properties",
     "transform-proto-to-assign",
     "transform-runtime",
-    "add-module-exports",
-    "react-hot-loader/babel",
-    "transform-dev",
-    [
-      "import",
-      {
-        "libraryName": "rsuite",
-        "libraryDirectory": "lib",
-        "camel2DashComponentName": false
-      }
-    ]
-  ],
-  "env": {
-    "production": {
-      "presets": [
-        "react-optimize"
-      ]
-    }
-  }
+    "react-hot-loader/babel"
+  ]
 }

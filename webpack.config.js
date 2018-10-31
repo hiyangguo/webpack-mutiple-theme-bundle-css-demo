@@ -56,10 +56,7 @@ module.exports = {
     rules: [
       {
         test: /\.js$/,
-        use: [
-          'transform-loader?brfs', // Use browserify transforms as webpack-loader.
-          'babel-loader?babelrc'
-        ],
+        use: ['babel-loader?babelrc'],
         exclude: /node_modules/
       },
       {
@@ -70,14 +67,6 @@ module.exports = {
           // use style-loader in development
           fallback: 'style-loader?{attrs:{prop: "value"}}'
         })
-      },
-      {
-        test: /\.html$/,
-        use: [
-          {
-            loader: 'html-loader'
-          }
-        ]
       },
       // 将Loader 的集合，加入 rules
       ...themeLoaderSet
