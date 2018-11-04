@@ -1,6 +1,7 @@
 # webpack-mutiple-theme-bundle-css-demo
 本文主要详细介绍了，如何使用 [webpack][webpack]，打包多套不同主题的解决方案以及实践中所遇到的问题及解决方案。
 
+> 如果你只是想快速编译多套主题，请直接使用 [webpack-multiple-themes-compile][webpack-multiple-themes-compile] 库。
 <!-- more -->
 
 ## 起因
@@ -218,6 +219,8 @@ new HtmlwebpackPlugin({
 ## 优化与改进
 上面方法存在一个比较严重的问题，就是需要在 `themes` 文件夹下手动建立多个主题文件。这样做一方面比较难维护，另一方面也会多很多的冗余。所以这里写了一个[脚本][generate-themes-script]，读取配置文件，并生成多个`theme.less`。
 
+## 最终实现
+最终写了一个[webpack-multiple-themes-compile][webpack-multiple-themes-compile]库，来完成上面所有的操作。只需要简单的几行配置！
 
 
 [webpack]:https://webpack.js.org/
@@ -237,3 +240,4 @@ new HtmlwebpackPlugin({
 [use-plugin]:https://github.com/hiyangguo/webpack-mutiple-theme-bundle-css-demo/commit/2688cead3298b65a4e5871ead1d261b008b545a8
 [final]:https://hiyangguo.github.io/webpack-mutiple-theme-bundle-css-demo/
 [generate-themes-script]:https://github.com/hiyangguo/webpack-mutiple-theme-bundle-css-demo/blob/master/script/generate-themes.js
+[webpack-multiple-themes-compile]:https://github.com/rsuite/webpack-multiple-themes-compile/blob/master/README_zh.md
